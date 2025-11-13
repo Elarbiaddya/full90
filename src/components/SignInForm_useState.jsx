@@ -6,7 +6,7 @@ import {
 } from "../utils/firebase";
 import { validation } from "../utils/validationForm";
 import { useDebouncedCallback } from "use-debounce";
-import FormInput from "./FormInput_masEscalable";
+import FormInput from "./FormInput";
 import { UserContext } from "../contexts/ContextUser";
 import { useNavigate } from "react-router-dom";
 

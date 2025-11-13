@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import AdminUsers from "../components/AdminUsers";
+import AdminUsers from "../components/AdminUser.jsx";
+import "../styles/AdminPanel.css";
 
 function AdminPanel() {
   const [users, setUsers] = useState([]);

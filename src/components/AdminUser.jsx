@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./AdminUsers.css";
+import "../styles/AdminPanel.css";
 
 function AdminUsers({ users, onDeleteUser, onUpdateUser }) {
   const [selectedUser, setSelectedUser] = useState(null);

@@ -6,7 +6,7 @@ import BigLayout from "./pages/BigLayout";
 import Error from "./pages/Error";
 import AdminPanel from "./pages/AdminPanel";
 import Home from "./pages/Home";
-import "./styles/globales.css";
+import "./styles/App.css";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
