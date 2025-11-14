@@ -9,6 +9,7 @@ import { useDebouncedCallback } from "use-debounce";
 import FormInput from "./NewFormInput";
 import { UserContext } from "../contexts/ContextUser";
 import { useNavigate } from "react-router-dom";
+import styles from "../pages/modules/login.module.css";
 
 function SignInForm() {
   const navigate = useNavigate();
@@ -78,11 +79,16 @@ function SignInForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+  <div className={styles["login-container"]}>
+    <div className={styles["login-logo"]}>LOGO</div>
+    <h2 className={styles["login-title"]}>Iniciar sesión</h2>
+    <form onSubmit={handleSubmit} className={styles["login-form"]}>
+
       <FormInput
-        label="Email"
+        className={styles["login-input"]}
         id="email"
         type="email"
+        placeholder="Email"
         value={email}
         onChange={handleEmail}
         error={errorEmail}
@@ -90,7 +96,7 @@ function SignInForm() {
       />
 
       <FormInput
-        label="Password"
+        className={styles["login-input"]}
         id="passwd"
         type="password"
         value={passwd}
@@ -99,14 +105,28 @@ function SignInForm() {
         required
       />
 
-      <div>
-        <button type="submit">Login con usuario y passwd</button>
-        <button type="button" onClick={handleGoogle}>
-          Login con Google
+      <div className={styles["login-buttons"]}>
+        <button type="submit" className={styles["login-button"]}>
+        Continuar
+        </button>
+
+        <button
+          type="button"
+          className={styles["login-google-button"]}
+          onClick={handleGoogle}
+        >
+          Iniciar con Google
         </button>
       </div>
     </form>
-  );
+
+    <p className={styles["login-footer"]}>
+      ¿No tienes cuenta?
+      <a href="/register"> Regístrate</a>
+    </p>
+  </div>
+);
+
 }
 
 export default SignInForm;

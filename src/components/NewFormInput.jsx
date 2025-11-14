@@ -1,8 +1,8 @@
-const NewFormInput = ({ label, id, error, required = false, ...props }) => {
+const NewFormInput = ({ label, id, error, className, required = false, ...props }) => {
   return (
     <div>
       <label htmlFor={id}>{label}</label>
-      <input id={id} required={required} {...props} />
+      <input id={id} required={required} className={className} {...props} />
       {error && <p className="error">{error}</p>}
     </div>
   );

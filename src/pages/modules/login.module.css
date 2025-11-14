@@ -1,0 +1,77 @@
+/* --- CONTENEDOR GENERAL --- */
+.login-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  font-family: "Inter", sans-serif;
+}
+
+/* --- LOGO --- */
+.login-logo {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* --- TITULO --- */
+.login-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* --- INPUTS --- */
+.login-input {
+  width: 340px;
+  padding: 16px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #d9d9d9;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+/* --- BOTON --- */
+.login-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.login-button {
+  width: 340px;
+  padding: 16px 0;
+  background: #d9d9d9;
+  border-radius: 50px;
+  border: 2px solid black;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background: #cfcfcf;
+}
+
+/* --- TEXTO INFERIOR --- */
+.login-footer {
+  margin-top: 40px;
+  font-size: 15px;
+}
+
+.login-footer a {
+  font-weight: 700;
+  margin-left: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
