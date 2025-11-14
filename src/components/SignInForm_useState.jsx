@@ -79,52 +79,55 @@ function SignInForm() {
   };
 
   return (
-  <div className={styles["login-container"]}>
-    <div className={styles["login-logo"]}>LOGO</div>
-    <h2 className={styles["login-title"]}>Iniciar sesión</h2>
-    <form onSubmit={handleSubmit} className={styles["login-form"]}>
+  <main className={styles["login-main"]}>
+    <div className={styles["login-container"]}>
+      <div className={styles["login-logo"]}>LOGO</div>
+      <h2 className={styles["login-title"]}>Iniciar sesión</h2>
+      <form onSubmit={handleSubmit} className={styles["login-form"]}>
 
-      <FormInput
-        className={styles["login-input"]}
-        id="email"
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={handleEmail}
-        error={errorEmail}
-        required
-      />
+        <FormInput
+          className={styles["login-input"]}
+          id="email"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={handleEmail}
+          error={errorEmail}
+          required
+        />
 
-      <FormInput
-        className={styles["login-input"]}
-        id="passwd"
-        type="password"
-        value={passwd}
-        onChange={handlePasswd}
-        error={errorPasswd}
-        required
-      />
+        <FormInput
+          className={styles["login-input"]}
+          id="passwd"
+          type="password"
+          placeholder="Contraseña"
+          value={passwd}
+          onChange={handlePasswd}
+          error={errorPasswd}
+          required
+        />
 
-      <div className={styles["login-buttons"]}>
-        <button type="submit" className={styles["login-button"]}>
-        Continuar
-        </button>
+        <div className={styles["login-buttons"]}>
+          <button type="submit" className={styles["login-button"]}>
+          Continuar
+          </button>
 
-        <button
-          type="button"
-          className={styles["login-google-button"]}
-          onClick={handleGoogle}
-        >
-          Iniciar con Google
-        </button>
-      </div>
-    </form>
+          <button
+            type="button"
+            className={styles["login-google-button"]}
+            onClick={handleGoogle}
+          >
+            Iniciar con Google
+          </button>
+        </div>
+      </form>
 
-    <p className={styles["login-footer"]}>
-      ¿No tienes cuenta?
-      <a href="/register"> Regístrate</a>
-    </p>
-  </div>
+      <p className={styles["login-footer"]}>
+        ¿No tienes cuenta?
+        <a href="/register"> Regístrate</a>
+      </p>
+    </div>
+  </main>
 );
 
 }
