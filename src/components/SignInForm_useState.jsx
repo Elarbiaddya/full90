@@ -52,15 +52,13 @@ function SignInForm() {
     try {
       const responseAuth = await signInWithGooglePopup();
 
-      console.log("respuesta auth", responseAuth);
-
       const responseDatabase = await createUserDocumentFromAuth(
         responseAuth.user,
         {
           rol: "admin",
         }
       );
-      console.log("respuesta dabatase", responseDatabase);
+      navigate("/");
     } catch (exception) {
       console.error("movida error", exception);
     }

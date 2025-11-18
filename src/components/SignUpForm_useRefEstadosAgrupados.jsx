@@ -6,6 +6,7 @@ import {
 import { validation } from "../utils/validationForm";
 import { useDebouncedCallback } from "use-debounce";
 import FormInput from "./NewFormInput";
+import { useNavigate } from "react-router-dom";
 import styles from "../pages/modules/registro.module.css";
 
 function SignUpFormEstadosAgrupados() {
@@ -13,6 +14,7 @@ function SignUpFormEstadosAgrupados() {
   const displayNameRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
+  const navigate = useNavigate();
 
   const [serverError, setServerError] = useState(null);
 
@@ -85,6 +87,10 @@ function SignUpFormEstadosAgrupados() {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1); // Va a la página anterior en el historial
+  };
+
   return (
     <>
       {serverError && <p className="error">{serverError}</p>}
@@ -139,7 +145,11 @@ function SignUpFormEstadosAgrupados() {
                 Continuar
               </button>
 
-              <button type="button" className={styles["login-footer"]}>
+              <button
+                type="button"
+                className={styles["login-footer"]}
+                onClick={handleBack}
+              >
                 Volver
               </button>
             </div>
