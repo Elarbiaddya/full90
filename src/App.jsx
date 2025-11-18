@@ -1,8 +1,9 @@
-import "./styles/globalstyles.css"
+import "./styles/globalstyles.css";
 import "./styles/App.css";
 
-
-import SignInForm from "./components/SignInForm_useState";
+import SignInForm from "./pages/Login";
+import SignUpForm from "./pages/Registro";
+import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 
 /* import BigLayout from "./pages/BigLayout"
@@ -21,9 +22,11 @@ import Contacto from "./pages/Contacto" */
 function App() {
   return (
     <Routes>
-      <Route path="/loginUseState" element={<SignInForm />} />
+      <Route path="/login" element={<SignInForm />} />
+      <Route path="/registro" element={<SignUpForm />} />
+      <Route path="/" element={<Home />} />
+
       {/* <Route path="/" element={<BigLayout />}>
-        <Route index element={<Home />} />
         <Route path="*" element={<Error />} />
       </Route> */}
     </Routes>
