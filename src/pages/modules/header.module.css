@@ -1,0 +1,46 @@
+/* Header principal */
+.header {
+  display: flex;
+  background-color: #1a1a1a;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Contenedor de búsqueda */
+.busquedaContainer {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    filter: invert(1); /* Cambiar las img por iconos */
+  }
+}
+
+/* Contenedor del logo */
+.logoContainer {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 125px;
+    width: auto;
+  }
+}
+
+/* Contenedor de admin/usuario */
+.adminContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+
+  img {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    filter: invert(1);
+  }
+}

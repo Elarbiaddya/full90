@@ -5,8 +5,9 @@ import SignInForm from "./pages/Login";
 import SignUpForm from "./pages/Registro";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
+import BigLayout from "./pages/BigLayout";
 
-/* import BigLayout from "./pages/BigLayout"
+/* 
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Registro from "./pages/Registro"
@@ -24,11 +25,11 @@ function App() {
     <Routes>
       <Route path="/login" element={<SignInForm />} />
       <Route path="/registro" element={<SignUpForm />} />
-      <Route path="/" element={<Home />} />
 
-      {/* <Route path="/" element={<BigLayout />}>
-        <Route path="*" element={<Error />} />
-      </Route> */}
+      <Route path="/" element={<BigLayout />}>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="*" element={<Error />} /> */}
+      </Route>
     </Routes>
   );
 }

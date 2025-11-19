@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
-import MainNavigation from "../components/MainNavigation";
+import Home from "./Home";
+import Header from "../components/Reusables/Header";
 
 function BigLayout() {
   return (
     <>
-      <MainNavigation />
+      <Header/>
       <main>
-        <Outlet />
+        <Home />
+        {/* <Outlet /> */}
       </main>
     </>
   );
