@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import Home from "./Home";
 import Header from "../components/Reusables/Header";
 
 function BigLayout() {
@@ -7,8 +6,7 @@ function BigLayout() {
     <>
       <Header/>
       <main>
-        <Home />
-        {/* <Outlet /> */}
+        { <Outlet /> }
       </main>
     </>
   );

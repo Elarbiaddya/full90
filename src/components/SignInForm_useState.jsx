@@ -122,7 +122,7 @@ function SignInForm() {
 
       <p className={styles["login-footer"]}>
         ¿No tienes cuenta?
-        <a href="/register"> Regístrate</a>
+        <a href="/"> Regístrate</a>
       </p>
     </div>
   </main>
