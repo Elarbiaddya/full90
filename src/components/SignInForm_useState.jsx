@@ -76,6 +76,10 @@ function SignInForm() {
     }
   };
 
+  const handleRegistro = () => {
+    navigate("/Registro"); // Va a la página anterior en el historial
+  };
+
   return (
   <main className={styles["login-main"]}>
     <div className={styles["login-container"]}>
@@ -122,7 +126,7 @@ function SignInForm() {
 
       <p className={styles["login-footer"]}>
         ¿No tienes cuenta?
-        <a href="/"> Regístrate</a>
+        <p onClick={handleRegistro}> Regístrate</p>
       </p>
     </div>
   </main>
