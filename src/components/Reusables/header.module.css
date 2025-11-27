@@ -3,7 +3,8 @@
   display: flex;
   background-color: #1a1a1a;
   align-items: center;
-  justify-content: space-around;
+  padding: 0 64px;
+  justify-content: space-between;
 }
 
 /* Contenedor de búsqueda */

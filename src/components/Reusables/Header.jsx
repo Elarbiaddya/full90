@@ -6,7 +6,7 @@ import logo from "/img/logo.webp";
 import buscar from "/img/buscar.webp";
 import usuario from "/img/usuario.webp";
 import carrito from "/img/carrito.webp";
-import styles from "../../pages/modules/header.module.css";
+import styles from "./header.module.css";
 
 function Header() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -25,10 +25,10 @@ function Header() {
         <div className={styles.busquedaContainer}>
           <img src={buscar} alt="" />
         </div>
-        <div className={styles["logoContainer"]}>
+        <div className={styles.logoContainer}>
           <img src={logo} />
         </div>
-        <div className={styles["adminContainer"]}>
+        <div className={styles.adminContainer}>
           <img src={usuario} />
           <img src={carrito} />
         </div>

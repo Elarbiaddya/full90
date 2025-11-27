@@ -1,13 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Reusables/Header";
+import Footer from "../components/Reusables/Footer";
+import styles from "./modules/biglayout.module.css";
 
 function BigLayout() {
   return (
     <>
-      <Header/>
-      <main>
-        { <Outlet /> }
-      </main>
+      <div className={styles.container}>
+        <Header />
+        <main>{<Outlet />}</main>
+        <Footer />
+      </div>
     </>
   );
 }
