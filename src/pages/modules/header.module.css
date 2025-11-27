@@ -12,8 +12,8 @@
   align-items: center;
 
   img {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
     filter: invert(1); /* Cambiar las img por iconos */
   }
@@ -38,9 +38,31 @@
   gap: 1.5rem;
 
   img {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
     filter: invert(1);
+  }
+}
+
+/* Contenedor de navegación */
+.navContainer {
+  background-color: red;
+  display: flex;
+  flex-wrap: wrap;
+  height: 40px;
+  align-items: center;
+
+  ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style: none;
+
+    li *{
+      align-items: center;
+      color: white;
+    }
   }
 }
