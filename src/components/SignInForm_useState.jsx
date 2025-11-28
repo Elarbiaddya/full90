@@ -126,7 +126,9 @@ function SignInForm() {
 
       <p className={styles["login-footer"]}>
         ¿No tienes cuenta?
-        <p onClick={handleRegistro}> Regístrate</p>
+        <button onClick={handleRegistro}>
+          Regístrate
+        </button>
       </p>
     </div>
   </main>
