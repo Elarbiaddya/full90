@@ -1,6 +1,6 @@
 function Pago() {
   return (
-    <h1>Hola</h1>
+    <h1>Pago</h1>
     
   );
 }

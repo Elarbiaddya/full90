@@ -77,7 +77,7 @@ function SignInForm() {
   };
 
   const handleRegistro = () => {
-    navigate("/Registro"); // Va a la página anterior en el historial
+    navigate("/Registro"); // Va a la página de registro
   };
 
   return (

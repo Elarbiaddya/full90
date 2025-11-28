@@ -1,6 +1,6 @@
 function Camiseta() {
   return (
-    <h1>Hola</h1>
+    <h1>Camiseta</h1>
     
   );
 }

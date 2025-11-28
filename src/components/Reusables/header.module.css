@@ -3,9 +3,19 @@
   display: flex;
   background-color: #1a1a1a;
   align-items: center;
-  padding: 0 64px;
   justify-content: space-between;
+  flex-direction: column;
 }
+
+.div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 64px;
+  width: 100%;
+}
+
 
 /* Contenedor de búsqueda */
 .busquedaContainer {
@@ -16,7 +26,7 @@
     width: 35px;
     height: 35px;
     cursor: pointer;
-    filter: invert(1); /* Cambiar las img por iconos */
+    filter: invert(1);
   }
 }
 
@@ -44,6 +54,11 @@
     cursor: pointer;
     filter: invert(1);
   }
+}
+
+
+.navbar {
+  width: 100%;
 }
 
 /* Contenedor de navegación */
