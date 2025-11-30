@@ -7,6 +7,7 @@ import logo from "/img/logo.webp";
 import buscar from "/img/buscar.webp";
 import usuario from "/img/usuario.webp";
 import carrito from "/img/carrito.webp";
+import leave from "/img/leave.webp";
 import styles from "./header.module.css";
 
 
@@ -54,7 +55,7 @@ function Header() {
           </div>
           <div className={styles.adminContainer}>
             <img onClick={handlePerfil} src={usuario} />
-              {currentUser && <button onClick={handleLogout}>Logout</button>}
+              {currentUser && <img onClick={handleLogout} src={leave}/>}
             <img onClick={handleCarrito} src={carrito} />
           </div>
         </div>
