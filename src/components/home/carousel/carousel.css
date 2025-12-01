@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.keen-slider{
+  width: 100%;
+  height: 750px;
+  position: relative;
+}
+
+.keen-slider__slide {
+  width: 100% ;
+  height: 750;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide1 {
+  background-image: url("/carousel/img1.webp");
+  background-size:cover;
+  background-position: center;
+}
+
+.slide2 {
+  background-image: url("/carousel/img2.webp");
+  background-size: cover;
+  background-position: center;
+}

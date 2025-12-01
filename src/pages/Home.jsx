@@ -1,13 +1,60 @@
-import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw"; // 👈 importa esto
-import styles from "./modules/home.module.css";
+import styles from "./modules/home.module.css"
+import Carousel from "../components/home/carousel/carousel"
 
 function Home() {
   return (
-    <h1>Hola</h1>
-    
+    <div className={styles.container}>
+      <Carousel />
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+            <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+            <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+            <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+      <div>aasdasdsasd</div>
+
+    </div>
   );
 }
 

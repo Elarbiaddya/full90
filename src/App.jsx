@@ -25,8 +25,6 @@ function App() {
       <Routes>
         <Route path="/" element={<BigLayout />} >
           <Route index element={<Home />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Registro" element={<Registro />} />
           <Route path="/CajasMisteriosas" element={<CajasMisteriosas />} />
           <Route path="/Tienda" element={<Tienda />} />
           <Route path="/Carrito" element={<Carrito />} />
@@ -37,6 +35,10 @@ function App() {
           <Route path="/Admin" element={<Admin />} />
           <Route path="/Contacto" element={<Contacto />} />
           <Route path="*" element={<Error />} /> 
+        </Route>
+        <Route>
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Registro" element={<Registro />} />
         </Route>
       </Routes>
     </>
