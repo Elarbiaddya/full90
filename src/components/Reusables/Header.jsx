@@ -3,6 +3,7 @@ import { UserContext } from "../../contexts/ContextUser";
 import { useContext } from "react";
 import { signOutUser } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
 import logo from "/img/logo.webp";
 import buscar from "/img/buscar.webp";
 import usuario from "/img/usuario.webp";
@@ -48,15 +49,15 @@ function Header() {
       <header className={styles.header}>
         <div className={styles.div}>
           <div className={styles.busquedaContainer}>
-            <img src={buscar} alt="" />
+            <Icon icon="hugeicons:search-01" />
           </div>
           <div className={styles.logoContainer}>
-            <img onClick={handleHome} src={logo} />
+            <img onClick={handleHome} src={logo} /> 
           </div>
           <div className={styles.adminContainer}>
-            <img onClick={handlePerfil} src={usuario} />
-              {currentUser && <img onClick={handleLogout} src={leave}/>}
-            <img onClick={handleCarrito} src={carrito} />
+            <Icon icon="mage:user" onClick={handlePerfil}/>
+              {currentUser && <Icon icon="pepicons-pencil:leave" onClick={handleLogout} />}
+            <Icon icon="famicons:bag-outline" />
           </div>
         </div>
         <nav className={styles.navbar}>
