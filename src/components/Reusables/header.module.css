@@ -49,29 +49,36 @@ svg {
   gap: 1.5rem;
 }
 
-
 .navbar {
+  border-top: 1px solid var(--border-color);
   width: 100%;
 }
 
 /* Contenedor de navegación */
 .navContainer {
-  background-color: var(--primary-color);
+  border-top: var(--white-color);
+  background-color: var(--black-color);
   display: flex;
   flex-wrap: wrap;
   height: 40px;
   align-items: center;
 
-  ul{
+  ul {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     list-style: none;
 
-    li *{
+    li {
       align-items: center;
-      color: var(--white-color);
+
+      a {
+        color: var(--white-color);
+      }
+      span {
+        color: var(--border-color);
+      }
     }
   }
 }
