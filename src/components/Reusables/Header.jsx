@@ -5,10 +5,6 @@ import { signOutUser } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import logo from "/img/logo.webp";
-import buscar from "/img/buscar.webp";
-import usuario from "/img/usuario.webp";
-import carrito from "/img/carrito.webp";
-import leave from "/img/leave.webp";
 import styles from "./header.module.css";
 
 
