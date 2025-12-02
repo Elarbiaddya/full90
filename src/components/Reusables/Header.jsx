@@ -57,7 +57,7 @@ function Header() {
           <div className={styles.adminContainer}>
             <Icon icon="mage:user" onClick={handlePerfil}/>
               {currentUser && <Icon icon="pepicons-pencil:leave" onClick={handleLogout} />}
-            <Icon icon="famicons:bag-outline" />
+            <Icon icon="famicons:bag-outline" onClick={handleCarrito}/>
           </div>
         </div>
         <nav className={styles.navbar}>
