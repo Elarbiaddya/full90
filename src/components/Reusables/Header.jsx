@@ -10,7 +10,6 @@ import styles from "./header.module.css";
 
 function Header() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  console.log(currentUser);
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
