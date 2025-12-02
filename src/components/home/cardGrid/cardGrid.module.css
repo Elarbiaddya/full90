@@ -1,0 +1,61 @@
+/* Contenedor grande */
+.productSection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 0 20px; /* espacio lateral en pantallas pequeñas */
+}
+
+/* Título */
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: white;
+}
+
+/* Grid de las cards */
+.cardGrid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* permite que las cards bajen a otra fila si no caben */
+}
+
+/* Card */
+.card {
+  flex: 1 1 250px; /* ancho base de 250px, pero se ajusta */
+  max-width: 300px; /* ancho máximo */
+  background: #111;
+  border-radius: 15px;
+  border: 1px solid #333;
+  text-align: center;
+  color: white;
+  padding-bottom: 15px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Imagen */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Título dentro de la card */
+.card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+}
+
+/* Precio */
+.price {
+  color: #bbb;
+  margin-top: 5px;
+  font-weight: bold;
+}

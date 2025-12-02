@@ -23,6 +23,7 @@
     "react-router-dom": "^7.9.5",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
+    "three": "^0.181.2",
     "use-debounce": "^10.0.6"
   },
   "devDependencies": {
