@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
 import styles from "./footer.module.css";
 import Acordeon from "../Acordeon.jsx";
 import logo from "/img/logo.webp";
@@ -26,9 +27,9 @@ function Footer() {
         </div>
         <div className={styles.sociales}>
           <ul>
-            <li>Instagram</li>
-            <li>Instagram</li>
-            <li>Instagram</li>
+            <li><Icon icon="mdi:instagram" width="35px" height="35px" /></li>
+            <li><Icon icon="ic:baseline-tiktok" /></li>
+            <li><Icon icon="fa7-brands:youtube" /></li>
           </ul>
         </div>
       </div>

@@ -64,6 +64,13 @@ footer {
   display: flex;
   justify-content: space-around;
 
+  svg {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    color: var(--white-color);
+  }
+
   ul {
     display: flex;
     flex-wrap: wrap;
