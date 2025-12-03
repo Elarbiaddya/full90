@@ -6,6 +6,12 @@ footer {
   background-color: var(--black-color);
   color: var(--white-color);
   padding: 20px 0;
+  transition: height 0.25s ease, padding 0.25s ease;
+}
+
+.acordeonContainer {
+  margin: 0;
+  padding: 0; /* ✔ evita aire extra */
 }
 
 /* Primera fila: 3 columnas */
@@ -14,22 +20,32 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   padding: 20px;
+  justify-items: center;
 }
 
-.acordeonContainer{
-    display: flex;
-    justify-items: center;
+.listaEnlaces {
+  display: flex;
+  list-style-type: none;
+  gap: 1.5rem;
+  align-items: center;
 
-    ul{
-        display: flex;
-        list-style-type: none;
-        gap: 1.5rem;
-        align-items: center;
+  a {
+    color: var(--white-color);
+  }
+}
 
-        a{
-            color: var(--white-color)
-        };
+.listaTienda {
+  list-style-type: none;
+
+  li {
+    a {
+      font-family: system-ui;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #f1b8bf;
+      padding-left: 30px;
     }
+  }
 }
 
 .logoContainer {
@@ -44,16 +60,16 @@ footer {
   }
 }
 
-.sociales{
-    display: flex;
-    justify-content: space-around;
+.sociales {
+  display: flex;
+  justify-content: space-around;
 
-    ul{
-        display: flex;
-        flex-wrap: wrap;
-        list-style-type: none;
-        gap: 1.5rem;
-    }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    gap: 1.5rem;
+  }
 }
 
 /* Segunda fila */

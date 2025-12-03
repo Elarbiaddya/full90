@@ -8,12 +8,12 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
-import styles from "../pages/modules/acordeon.module.css";
+import styles from "../components/Reusables/footer.module.css";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(() => ({
-  border: `1px solid var(--white-color)`,
+  border: `none`,
   "&:not(:last-child)": {
     borderBottom: "none",
   },
@@ -44,7 +44,7 @@ const AccordionSummary = styled((props) => (
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  padding: theme.spacing(2),
+  padding: "2px 0 0 0",
   borderTop: "none", // ❌ Sin borde interno
   backgroundColor: "var(--black-color)", // ✔ Fondo igual
   color: "var(--white-color)", // ✔ Texto dentro
@@ -72,7 +72,7 @@ export default function Acordeon() {
               <NavLink to="/Camisetas">Camisetas</NavLink>
             </li>
             <li>
-              <NavLink to="/Contacto">Cajas sorpresa</NavLink>
+              <NavLink to="/CajasMisteriosas">Cajas sorpresa</NavLink>
             </li>
           </Typography>
         </AccordionDetails>
