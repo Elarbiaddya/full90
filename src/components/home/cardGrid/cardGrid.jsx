@@ -27,8 +27,10 @@ export default function ProductSection() {
         {items.map((item, i) => (
           <div className={styles.card} key={i}>
             <img src={item.image} alt={item.title} />
-            <h3>{item.title}</h3>
-            <p className={styles.price}>{item.price}</p>
+            <div>
+              <p className={styles.price}>{item.price}</p>
+              <h3>{item.title}</h3>
+            </div>
           </div>
         ))}
       </div>
