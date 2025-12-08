@@ -9,6 +9,8 @@ import { useDebouncedCallback } from "use-debounce";
 import FormInput from "./NewFormInput";
 import { UserContext } from "../contexts/ContextUser";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
+import logo from "/img/logo.webp";
 import styles from "../pages/modules/login.module.css";
 
 function SignInForm() {
@@ -40,6 +42,10 @@ function SignInForm() {
       setErrorPasswd(null);
     }
   }, 3000);
+
+  const handleHome = () => {
+    navigate("/"); // Va a la página Home.
+  };
 
   const handlePasswd = (event) => {
     const currentPasswd = event.target.value;
@@ -81,9 +87,9 @@ function SignInForm() {
   };
 
   return (
-  <main className={styles["login-main"]}>
-    <div className={styles["login-container"]}>
-      <div className={styles["login-logo"]}>LOGO</div>
+  <main className={styles.loginMain}>
+    <div className={styles.loginContainer}>
+      <img onClick={handleHome} src={logo}></img>
       <h2 className={styles["login-title"]}>Iniciar sesión</h2>
       <form onSubmit={handleSubmit} className={styles["login-form"]}>
 
@@ -114,21 +120,18 @@ function SignInForm() {
           Continuar
           </button>
 
-          <button
-            type="button"
-            className={styles["login-google-button"]}
+          <Icon
             onClick={handleGoogle}
-          >
-            Iniciar con Google
-          </button>
+            icon="material-icon-theme:google"
+          />
         </div>
       </form>
 
       <p className={styles["login-footer"]}>
         ¿No tienes cuenta?
-        <button onClick={handleRegistro}>
+        <a onClick={handleRegistro}>
           Regístrate
-        </button>
+        </a>
       </p>
     </div>
   </main>

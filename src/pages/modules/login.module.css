@@ -1,14 +1,14 @@
 /* --- CONTENEDOR GENERAL --- */
-.login-main {
+.loginMain {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--light-gray);
+  background: var(--light-red);
 }
 
-.login-container {
+.loginContainer {
   width: 550px;
   height: auto;
   display: flex;
@@ -18,8 +18,13 @@
   align-items: center;
   background: var(--white-color);
   border-radius: 10px;
-  font-family: "Inter", sans-serif;
   border: 2px solid var(--border-color);
+
+  img {
+    height: 125px;
+    width: auto;
+    cursor: pointer;
+  }
 }
 
 /* --- LOGO --- */
@@ -55,6 +60,12 @@
     align-items: center;
     gap: 16px;
     margin-top: 20px;
+  
+    svg{
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+  }
 }
 
 .login-button {
@@ -77,10 +88,10 @@
 /* --- TEXTO INFERIOR --- */
 .login-footer {
   margin-top: 40px;
-  font-size: 15px;
 }
 
 .login-footer a {
+  color: var(--dark-primary);
   font-weight: 700;
   margin-left: 4px;
   cursor: pointer;

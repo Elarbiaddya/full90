@@ -1,5 +1,5 @@
 main {
-  background-color: var(--light-gray);
+  background-color: var(--light-red);
 }
 
 .principalContainer {
@@ -21,7 +21,7 @@ main {
   padding: 20px;
 
   h2 {
-    font-size: 2.em;
+    font-size: 2em;
     margin-bottom: 10%;
   }
 }
