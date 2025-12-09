@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import logo from "/img/logo.webp";
 import styles from "./header.module.css";
+import { toast } from "react-toastify";
 
 
 function Header() {
@@ -16,7 +17,7 @@ function Header() {
       const response = await signOutUser();
       console.log(response);
       setCurrentUser(null);
-      navigate("/");
+      toast.success("Se ha cerrado la sesión correctamente")
     } catch (error) {
       console.log("error", error);
     }

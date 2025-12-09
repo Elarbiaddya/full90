@@ -18,12 +18,14 @@ import Pago from "./pages/Pago";
 import Contacto from "./pages/Contacto";
 import Error from "./pages/Error";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<BigLayout />} >
+        <Route path="/" element={<BigLayout />}>
           <Route index element={<Home />} />
           <Route path="/CajasMisteriosas" element={<CajasMisteriosas />} />
           <Route path="/Tienda" element={<Tienda />} />
@@ -34,13 +36,14 @@ function App() {
           <Route path="/SobreNosotros" element={<SobreNosotros />} />
           <Route path="/Admin" element={<Admin />} />
           <Route path="/Contacto" element={<Contacto />} />
-          <Route path="*" element={<Error />} /> 
+          <Route path="*" element={<Error />} />
         </Route>
         <Route>
           <Route path="/Login" element={<Login />} />
           <Route path="/Registro" element={<Registro />} />
         </Route>
       </Routes>
+      <ToastContainer position="top-center" autoClose={2000} />
     </>
   );
 }

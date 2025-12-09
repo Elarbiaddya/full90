@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useContext, useRef } from "react";
 import {
   createUserDocumentFromAuth,
   createAuthUserWithEmailAndPassword,
@@ -7,7 +7,10 @@ import { validation } from "../utils/validationForm";
 import { useDebouncedCallback } from "use-debounce";
 import FormInput from "./NewFormInput";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/ContextUser";
+import logo from "/img/logo.webp";
 import styles from "../pages/modules/registro.module.css";
+import { toast } from "react-toastify";
 
 function SignUpFormEstadosAgrupados() {
   const emailRef = useRef(null);
@@ -15,6 +18,7 @@ function SignUpFormEstadosAgrupados() {
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
   const navigate = useNavigate();
+  const { setCurrentUser } = useContext(UserContext);
 
   const [serverError, setServerError] = useState(null);
 
@@ -73,9 +77,12 @@ function SignUpFormEstadosAgrupados() {
         displayName: displayNameRef.current.value,
         rol: "user",
       });
+      setCurrentUser(user);
 
       console.log("User created:", user);
+      toast.success("Usuario creado correctamente") + navigate("/");
     } catch (error) {
+      toast.error("Error al registrar un usuario");
       if (error.code === "auth/email-already-in-use") {
         setServerError("El email ya está registrado");
       } else if (error.code === "auth/weak-password") {
@@ -87,20 +94,24 @@ function SignUpFormEstadosAgrupados() {
     }
   };
 
+  const handleHome = () => {
+    navigate("/"); // Va a la página Home.
+  };
+
   const handleBack = () => {
     navigate(-1); // Va a la página anterior en el historial
   };
 
   return (
     <>
-      {serverError && <p className="error">{serverError}</p>}
-      <main className={styles["login-main"]}>
-        <div className={styles["login-container"]}>
-          <div className={styles["login-logo"]}>LOGO</div>
-          <h2 className={styles["login-title"]}>Registro</h2>
-          <form onSubmit={handleSignUp} className={styles["login-form"]}>
+      {serverError && <p>{serverError}</p>}
+      <main className={styles.loginMain}>
+        <div className={styles.loginContainer}>
+          <img onClick={handleHome} src={logo}></img>
+          <h2>Registro</h2>
+          <form onSubmit={handleSignUp}>
             <FormInput
-              className={styles["login-input"]}
+              className={styles.loginInput}
               id="email"
               type="email"
               placeholder="Email"
@@ -111,7 +122,7 @@ function SignUpFormEstadosAgrupados() {
             />
 
             <FormInput
-              className={styles["login-input"]}
+              className={styles.loginInput}
               id="displayName"
               type="text"
               placeholder="Nombre"
@@ -121,7 +132,7 @@ function SignUpFormEstadosAgrupados() {
             />
 
             <FormInput
-              className={styles["login-input"]}
+              className={styles.loginInput}
               id="passwd"
               type="password"
               placeholder="Contraseña"
@@ -132,7 +143,7 @@ function SignUpFormEstadosAgrupados() {
             />
 
             <FormInput
-              className={styles["login-input"]}
+              className={styles.loginInput}
               id="confirmPassword"
               type="password"
               placeholder="Confirmar contraseña"
@@ -140,18 +151,14 @@ function SignUpFormEstadosAgrupados() {
               required
             />
 
-            <div className={styles["login-buttons"]}>
-              <button type="submit" className={styles["login-button"]}>
+            <div className={styles.loginButtons}>
+              <button type="submit" className={styles.loginButton}>
                 Continuar
               </button>
 
-              <button
-                type="button"
-                className={styles["login-footer"]}
-                onClick={handleBack}
-              >
-                Volver
-              </button>
+              <div className={styles.loginFooter}>
+                <a onClick={handleBack}>Volver</a>
+              </div>
             </div>
           </form>
         </div>

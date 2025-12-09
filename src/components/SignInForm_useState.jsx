@@ -11,6 +11,7 @@ import { UserContext } from "../contexts/ContextUser";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import logo from "/img/logo.webp";
+import { toast } from "react-toastify";
 import styles from "../pages/modules/login.module.css";
 
 function SignInForm() {
@@ -65,8 +66,10 @@ function SignInForm() {
         }
       );
       navigate("/");
+      toast.success("Sesión iniciada correctamente")
     } catch (exception) {
       console.error("movida error", exception);
+      toast.error("Error al inicar sesión")
     }
   };
 
@@ -77,8 +80,10 @@ function SignInForm() {
       console.log(response);
       setCurrentUser(response);
       navigate("/");
+      toast.success("Sesión iniciada correctamente")
     } catch (error) {
       console.log("error", error);
+      toast.error("Error al inicar sesión")
     }
   };
 
@@ -90,11 +95,11 @@ function SignInForm() {
   <main className={styles.loginMain}>
     <div className={styles.loginContainer}>
       <img onClick={handleHome} src={logo}></img>
-      <h2 className={styles["login-title"]}>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit} className={styles["login-form"]}>
+      <h2 className={styles.loginTitle}>Iniciar sesión</h2>
+      <form onSubmit={handleSubmit}>
 
         <FormInput
-          className={styles["login-input"]}
+          className={styles.loginInput}
           id="email"
           type="email"
           placeholder="Email"
@@ -105,7 +110,7 @@ function SignInForm() {
         />
 
         <FormInput
-          className={styles["login-input"]}
+          className={styles.loginInput}
           id="passwd"
           type="password"
           placeholder="Contraseña"
@@ -115,8 +120,8 @@ function SignInForm() {
           required
         />
 
-        <div className={styles["login-buttons"]}>
-          <button type="submit" className={styles["login-button"]}>
+        <div className={styles.loginButtons}>
+          <button type="submit" className={styles.loginButton}>
           Continuar
           </button>
 
@@ -127,7 +132,7 @@ function SignInForm() {
         </div>
       </form>
 
-      <p className={styles["login-footer"]}>
+      <p className={styles.loginFooter}>
         ¿No tienes cuenta?
         <a onClick={handleRegistro}>
           Regístrate
