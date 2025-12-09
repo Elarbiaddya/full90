@@ -21,7 +21,15 @@ import Error from "./pages/Error";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+/* import { useEffect } from "react";
+import { uploadCajas } from "./utils/uploadProducts"; */
+
 function App() {
+/*   useEffect(() => {
+    const upload = async () => uploadCajas();
+
+    upload();
+  }, []); */
   return (
     <>
       <Routes>
