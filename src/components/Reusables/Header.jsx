@@ -60,7 +60,7 @@ function Header() {
           <div className={styles.navContainer}>
             <ul>
               <li>
-                <NavLink to="/Camiseta">Camisetas de Fútbol</NavLink>
+                <NavLink to="/Tienda">Camisetas de Fútbol</NavLink>
               </li>
               <li>
                 <span>|</span>

@@ -1,0 +1,107 @@
+/* Contenedor grande */
+.productSection {
+  width: 100%;
+  max-width: 1400px;
+  border-radius: 10px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Título */
+.sectionTitle {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: var(--black-color);
+}
+
+/* GRID responsivo */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Fuerza exactamente 4 columnas */
+  gap: 25px;
+}
+
+/* Card */
+.card {
+  position: relative; /* necesario para el overlay */
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* Contenedor de la imagen */
+.cardImageContainer {
+  position: relative;
+  width: 100%;
+}
+
+/* Imagen de la camiseta */
+.card img {
+  width: 100%;
+  height: auto; /* mantiene proporción completa */
+  display: block;
+  border-radius: 10px;
+}
+
+/* Overlay con datos encima de la camiseta */
+.cardOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6); /* negro semitransparente */
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* Opcional: solo visible al pasar el mouse */
+  opacity: 1; 
+  transition: opacity 0.3s;
+}
+
+/* Si quieres efecto hover para mostrar overlay */
+.card:hover .cardOverlay {
+  opacity: 1;
+}
+
+/* Texto dentro del overlay */
+.cardOverlay h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.cardOverlay .price {
+  font-size: 1.1rem;
+  color: #ffd700; /* color dorado para resaltar precio */
+}
+
+.cardOverlay p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Responsividad */
+@media (max-width: 1200px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}

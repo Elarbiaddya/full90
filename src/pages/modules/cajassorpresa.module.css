@@ -1,0 +1,74 @@
+/* Contenedor grande */
+.productSection {
+  width: 100%;
+  max-width: 1400px; /* más grande que antes */
+  border-radius: 10px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px 20px;
+}
+
+/* Título */
+.sectionTitle {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: var(--black-color);
+}
+
+/* GRID mejorado (responsivo automáticamente) */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* Card */
+.card {
+  background: var(--white-color);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 450px;
+  transition: transform 0.3s;
+
+  img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  h3 {
+    margin: 12px 0 6px;
+    font-size: 1.3rem;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+  }
+}
+
+/* CardInfo */
+.cardInfo {
+  height: 20%;
+  background-color: var(--light-gray);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--border-color);
+  }
+
+  .price {
+    align-items: flex-start;
+    color: var(--dark-primary);
+    font-size: 1.1rem;
+  }
+}

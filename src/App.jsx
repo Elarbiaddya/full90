@@ -22,11 +22,18 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 /* import { useEffect } from "react";
-import { uploadCajas } from "./utils/uploadProducts"; */
+import { uploadCajas } from "./utils/uploadProducts";
+import { uploadCamisetas } from "./utils/uploadProducts"; */
 
 function App() {
 /*   useEffect(() => {
     const upload = async () => uploadCajas();
+
+    upload();
+  }, []); 
+  
+  useEffect(() => {
+    const upload = async () => uploadCamisetas();
 
     upload();
   }, []); */

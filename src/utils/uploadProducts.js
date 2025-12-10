@@ -1,13 +1,14 @@
 import { collection, setDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
-import  productos  from "../data/cajas";
+import  cajas  from "../data/cajas";
+import  camisetas  from "../data/camisetas";
 
 export const uploadCajas = async () => {
     try {
         const productsRef = collection(db, "cajas");
 
-        for (const prod of productos) {
-            const docRef = doc(productsRef, `box${String(prod.id)}`);
+        for (const prod of cajas) {
+            const docRef = doc(productsRef, `${String(prod.id)}`);
             await setDoc(docRef, prod);
         }
     } catch (error) {
@@ -19,8 +20,8 @@ export const uploadCamisetas = async () => {
     try {
         const productsRef = collection(db, "camisetas");
 
-        for (const prod of productos) {
-            const docRef = doc(productsRef, `camiseta${String(prod.id)}`);
+        for (const prod of camisetas) {
+            const docRef = doc(productsRef, `${String(prod.id)}`);
             await setDoc(docRef, prod);
         }
     } catch (error) {

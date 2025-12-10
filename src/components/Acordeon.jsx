@@ -69,7 +69,7 @@ export default function Acordeon() {
         <AccordionDetails>
           <Typography component="ul" className={styles.listaTienda}>
             <li>
-              <NavLink to="/Camisetas">Camisetas</NavLink>
+              <NavLink to="/Tienda">Camisetas</NavLink>
             </li>
             <li>
               <NavLink to="/CajasMisteriosas">Cajas sorpresa</NavLink>

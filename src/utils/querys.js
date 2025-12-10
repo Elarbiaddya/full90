@@ -8,3 +8,10 @@ export const getCajas = async () => {
     return productos;
 }
 
+export const getCamisetas = async () => {
+        const ref = await getDocs(collection(db, "camisetas"));
+        const productos = ref.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    
+    return productos;
+}
+
