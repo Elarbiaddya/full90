@@ -10,8 +10,16 @@ function Home() {
       <Carousel />
       <div className={styles.infoCardsContainer}>
         <InfoCard
-          icon="fluent-mdl2:giftbox"
+          icon="octicon:gift-24"
           text="Elige tu caja sorpresa"
+        />
+        <InfoCard
+          icon="radix-icons:cross-1"
+          text="Descarta el equipo que no te guste"
+        />
+        <InfoCard
+          icon="bi:bag-check"
+          text="Añádela al carrito"
         />
       </div>
       <CardGrid />
