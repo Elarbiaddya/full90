@@ -16,11 +16,12 @@
 
   --light-gray: #fbfbfb;
   --light-red: #fae8ea;
+
+  --dark-primary: #9d1424;
   --border-color: #444444;
 
   --primary-hover: #bc172b;
-  --dark-primary: #9d1424;
-
+  --dark-hover: #7d101d;
 }
 
 a {

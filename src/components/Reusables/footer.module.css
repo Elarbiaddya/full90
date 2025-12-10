@@ -11,7 +11,7 @@ footer {
 
 .acordeonContainer {
   margin: 0;
-  padding: 0; /* ✔ evita aire extra */
+  padding: 0;
 }
 
 /* Primera fila: 3 columnas */
@@ -30,6 +30,10 @@ footer {
   align-items: center;
 
   a {
+    color: var(--white-color);
+  }
+
+  svg{
     color: var(--white-color);
   }
 }
