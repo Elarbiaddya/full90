@@ -5,6 +5,13 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+
+  svg {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    color: var(--white-color);
+  }
 }
 
 .div {
@@ -14,13 +21,6 @@
   align-items: center;
   padding: 0 64px;
   width: 100%;
-}
-
-svg {
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  color: var(--white-color);
 }
 
 /* Contenedor de búsqueda */

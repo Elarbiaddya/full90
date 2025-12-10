@@ -1,0 +1,26 @@
+.infoCard {
+  background: #8b1515; /* rojo oscuro como el ejemplo */
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: fit-content;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #a51a1a;
+  }
+
+  svg {
+    font-size: 1.6rem; /* tamaño del icono */
+    display: flex;
+    align-items: center;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
