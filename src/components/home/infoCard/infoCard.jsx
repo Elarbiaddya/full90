@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./InfoCard.module.css";
+import styles from "./infoCard.module.css";
 import { Icon } from "@iconify/react";
 
 const InfoCard = ({ icon, text}) => {
