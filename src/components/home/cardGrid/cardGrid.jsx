@@ -21,15 +21,14 @@ const ProducSection = () => {
   return (
     <div className={styles.productSection}>
       <h2 className={styles.sectionTitle}>Cajas Sorpresa</h2>
-
       <div className={styles.cardGrid}>
         {cajas &&
           cajas.map((item, i) => (
             <div className={styles.card} key={i}>
               <img src={item.imagen} alt={item.nombre} />
-              <div>
-                <p className={styles.price}>{item.precio}</p>
+              <div className={styles.cardInfo}>
                 <h3>{item.nombre}</h3>
+                <p className={styles.price}>{item.precio} €</p>
               </div>
             </div>
           ))}

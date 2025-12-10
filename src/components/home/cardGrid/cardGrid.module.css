@@ -1,7 +1,6 @@
 /* Contenedor grande */
 .productSection {
   width: 100%;
-  background-color: rgb(247, 193, 193);
   max-width: 1400px; /* más grande que antes */
   border-radius: 10px;
   margin: 50px auto;
@@ -13,50 +12,63 @@
 .sectionTitle {
   font-size: 2.8rem;
   margin-bottom: 40px;
-  color: rgb(0, 0, 0);
+  color: var(--black-color);
 }
 
 /* GRID mejorado (responsivo automáticamente) */
 .cardGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
 
 /* Card */
 .card {
-  background: white; /* 0.6 = 60% de opacidad */
+  background: var(--white-color);
   border-radius: 10px;
-  border: 1px solid #333;
-  text-align: center;
-  color: white;
-  padding-bottom: 20px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 450px;
   transition: transform 0.3s;
+
+  img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  h3 {
+    margin: 12px 0 6px;
+    font-size: 1.3rem;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+  }
 }
 
-/* Hover */
-.card:hover {
-  transform: translateY(-8px);
-}
+/* CardInfo */
+.cardInfo {
+  height: 20%;
+  background-color: var(--light-gray);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
 
-/* Imagen */
-.card img {
-  width: 100%;
-  height: 100%; /* más grande */
-  object-fit: contain;
-  border-radius: 10px 10px 0 0;
-}
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--border-color);
+  }
 
-/* Título */
-.card h3 {
-  margin: 12px 0 6px;
-  font-size: 1.3rem;
-}
-
-/* Precio */
-.price {
-  color: #bbb;
-  margin-top: 5px;
-  font-weight: bold;
-  font-size: 1.1rem;
+  .price {
+    align-items: flex-start;
+    color: var(--dark-primary);
+    font-size: 1.1rem;
+  }
 }
