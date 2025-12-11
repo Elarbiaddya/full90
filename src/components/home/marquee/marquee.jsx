@@ -31,6 +31,13 @@ export default function Marquee() {
             <img src={logo} alt={`Logo copia ${index}`} />
           </div>
         ))}
+
+        {/* Tercera tanda (copia exacta) */}
+        {logos.map((logo, index) => (
+          <div className={styles.marquee__item} key={`copy-${index}`}>
+            <img src={logo} alt={`Logo copia ${index}`} />
+          </div>
+        ))}
       </div>
     </div>
   );

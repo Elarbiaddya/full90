@@ -78,7 +78,6 @@ function SignInForm() {
     try {
       const response = await signInAuthUserWithEmailAndPassword(email, passwd);
       console.log(response);
-      setCurrentUser(response);
       navigate("/");
       toast.success("Sesión iniciada correctamente")
     } catch (error) {

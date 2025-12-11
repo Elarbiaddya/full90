@@ -1,41 +1,34 @@
-import styles from "./modules/cajassorpresa.module.css"
+import styles from "./modules/cajassorpresa.module.css";
 import { getCajas } from "../utils/querys";
 import { useState, useEffect } from "react";
+import ProducSection from "../components/home/cajaGrid/cajaGrid";
 
 function CajasMisteriosas() {
-
   const [cajas, setCajas] = useState(null);
-  
-    useEffect(() => {
-      const fetchCajas = async () => {
-        try {
-          const data = await getCajas();
-          setCajas(data);
-        } catch (error) {
-          console.error("Error desde el card-Grid", error);
-        }
-      };
-  
-      fetchCajas();
-    }, []);
-  
-    return (
-      <div className={styles.productSection}>
-        <h2 className={styles.sectionTitle}>Cajas Sorpresa</h2>
-        <div className={styles.cardGrid}>
-          {cajas &&
-            cajas.map((item, i) => (
-              <div className={styles.card} key={i}>
-                <img src={item.imagen} alt={item.nombre} />
-                <div className={styles.cardInfo}>
-                  <h3>{item.nombre}</h3>
-                  <p className={styles.price}>{item.precio} €</p>
-                </div>
-              </div>
-            ))}
-        </div>
+
+  useEffect(() => {
+    const fetchCajas = async () => {
+      try {
+        const data = await getCajas();
+        setCajas(data);
+      } catch (error) {
+        console.error("Error desde el card-Grid", error);
+      }
+    };
+
+    fetchCajas();
+  }, []);
+
+  return (
+    <div className={styles.cajaGridContainer}>
+      <h2>Cajas Sorpresa</h2>
+      <div className={styles.cajaGridContainer}>
+        {cajas &&
+          cajas
+            .map((item, i) => <ProducSection key={i} caja={item} />)}
       </div>
-    );
+    </div>
+  );
 }
 
 export default CajasMisteriosas;
