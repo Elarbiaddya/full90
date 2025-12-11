@@ -1,4 +1,4 @@
-/* Contenedor grande */
+/* ===== Contenedor grande ===== */
 .productSection {
   width: 100%;
   max-width: 1400px;
@@ -6,71 +6,85 @@
   margin: 50px auto;
   text-align: center;
   padding: 20px;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
-/* Título */
+/* ===== Título ===== */
 .sectionTitle {
   font-size: 2.8rem;
   margin-bottom: 40px;
   color: var(--black-color);
 }
 
-/* GRID responsivo */
+/* ===== GRID responsivo ===== */
 .cardGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Fuerza exactamente 4 columnas */
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
 }
 
-/* Card */
+/* ===== Card ===== */
 .card {
-  position: relative; /* necesario para el overlay */
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s;
+  background: var(--light-gray);
 }
 
+/* ===== Hover en la tarjeta completa ===== */
 .card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
-/* Contenedor de la imagen */
+/* ===== Hover en el nombre del producto ===== */
+.cardOverlay h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.cardOverlay h3:hover {
+  color: var(--light-red-hover);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* ===== Contenedor de la imagen ===== */
 .cardImageContainer {
-  position: relative;
   width: 100%;
+  height: 250px;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-/* Imagen de la camiseta */
-.card img {
+.cardImageContainer img {
   width: 100%;
-  height: auto; /* mantiene proporción completa */
+  height: 100%;
+  object-fit: contain;
   display: block;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
 }
 
-/* Overlay con datos encima de la camiseta */
+/* ===== Contenedor de datos debajo de la imagen ===== */
 .cardOverlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.6); /* negro semitransparente */
-  color: #fff;
-  padding: 10px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  /* Opcional: solo visible al pasar el mouse */
-  opacity: 1; 
-  transition: opacity 0.3s;
+  gap: 5px;
+  text-align: left;
+  flex-grow: 1;
+  background: rgba(27, 27, 27, 0.85);
+  color: var(--white-color);
+  border-radius: 0 0 10px 10px;
 }
 
-/* Si quieres efecto hover para mostrar overlay */
-.card:hover .cardOverlay {
-  opacity: 1;
-}
-
-/* Texto dentro del overlay */
 .cardOverlay h3 {
   margin: 0;
   font-size: 1.2rem;
@@ -78,8 +92,9 @@
 }
 
 .cardOverlay .price {
+  margin: 0;
   font-size: 1.1rem;
-  color: #ffd700; /* color dorado para resaltar precio */
+  color: #ffd700;
 }
 
 .cardOverlay p {
@@ -87,7 +102,7 @@
   font-size: 0.95rem;
 }
 
-/* Responsividad */
+/* ===== Responsividad ===== */
 @media (max-width: 1200px) {
   .cardGrid {
     grid-template-columns: repeat(3, 1fr);

@@ -27,11 +27,11 @@ function Tienda() {
             <div className={styles.card} key={item.id}>
               <div className={styles.cardImageContainer}>
                 <img src={item.imagen} alt={item.nombre} />
-                <div className={styles.cardOverlay}>
-                  <h3>{item.nombre}</h3>
-                  <p className={styles.price}>{item.precio} €</p>
-                  <p><strong>Equipo:</strong> {item.equipo}</p>
-                </div>
+              </div>
+              <div className={styles.cardOverlay}>
+                <h3>{item.nombre}</h3>
+                <p className={styles.price}>{item.precio} €</p>
+                <p><strong>Equipo:</strong> {item.equipo}</p>
               </div>
             </div>
           ))
