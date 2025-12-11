@@ -1,6 +1,7 @@
 import styles from "./cardGrid.module.css";
 import { getCajas } from "../../../utils/querys";
 import { useState, useEffect } from "react";
+import CajaCard from "../../Reusables/cajaCard/cajaCard";
 
 const ProducSection = () => {
   const [cajas, setCajas] = useState(null);
@@ -23,14 +24,13 @@ const ProducSection = () => {
       <h2 className={styles.sectionTitle}>Cajas Sorpresa</h2>
       <div className={styles.cardGrid}>
         {cajas &&
-          cajas.map((item, i) => (
-            <div className={styles.card} key={i}>
-              <img src={item.imagen} alt={item.nombre} />
-              <div className={styles.cardInfo}>
-                <h3>{item.nombre}</h3>
-                <p className={styles.price}>{item.precio} €</p>
-              </div>
-            </div>
+          cajas.slice(0,3).map((item, i) => (
+            <CajaCard
+              key={i}
+              imagen={item.imagen}
+              nombre={item.nombre}
+              precio={item.precio}
+            />
           ))}
       </div>
     </div>
