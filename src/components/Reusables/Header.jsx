@@ -66,13 +66,13 @@ function Header() {
                 <span>|</span>
               </li>
               <li>
-                <NavLink to="/CajasMisteriosas">Cajas Misteriosas</NavLink>
+                <NavLink to="/CajasMisteriosas">Cajas Sorpresa</NavLink>
               </li>
               <li>
                 <span>|</span>
               </li>
               <li>
-                <NavLink to="/Nosotros">Nosotros</NavLink>
+                <NavLink to="/SobreNosotros">Nosotros</NavLink>
               </li>
               <li>
                 <span>|</span>

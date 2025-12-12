@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Cada sección = fila horizontal */
+.section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Imagen y texto misma proporción */
+.image {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.text {
+  width: 50%;
+}
+
+.text h2 {
+  margin-bottom: 10px;
+}
+
+.text p {
+  line-height: 1.6;
+}
+
+/* RESPONSIVE móvil */
+@media (max-width: 768px) {
+  .section,
+  .reverse {
+    flex-direction: column;
+  }
+
+  .image,
+  .text {
+    width: 100%;
+  }
+}
