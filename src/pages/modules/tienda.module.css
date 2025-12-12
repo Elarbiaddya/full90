@@ -1,5 +1,4 @@
-/* ===== Contenedor grande ===== */
-.productSection {
+.tiendaContainer {
   width: 100%;
   max-width: 1400px;
   border-radius: 10px;
@@ -9,114 +8,36 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-}
 
-/* ===== Título ===== */
-.sectionTitle {
-  font-size: 2.8rem;
-  margin-bottom: 40px;
-  color: var(--black-color);
+  h2 {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    color: var(--black-color);
+  }
 }
 
 /* ===== GRID responsivo ===== */
-.cardGrid {
+.camisetasGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
 }
 
-/* ===== Card ===== */
-.card {
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s;
-  background: var(--light-gray);
-}
-
-/* ===== Hover en la tarjeta completa ===== */
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-}
-
-/* ===== Hover en el nombre del producto ===== */
-.cardOverlay h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  transition: color 0.3s, transform 0.3s;
-}
-
-.cardOverlay h3:hover {
-  color: var(--light-red-hover);
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-/* ===== Contenedor de la imagen ===== */
-.cardImageContainer {
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.cardImageContainer img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  border-radius: 10px 10px 0 0;
-}
-
-/* ===== Contenedor de datos debajo de la imagen ===== */
-.cardOverlay {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  text-align: left;
-  flex-grow: 1;
-  background: rgba(27, 27, 27, 0.85);
-  color: var(--white-color);
-  border-radius: 0 0 10px 10px;
-}
-
-.cardOverlay h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.cardOverlay .price {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #ffd700;
-}
-
-.cardOverlay p {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
 /* ===== Responsividad ===== */
 @media (max-width: 1200px) {
-  .cardGrid {
+  .camisetasGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 900px) {
-  .cardGrid {
+  .camisetasGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .cardGrid {
+  .camisetasGrid {
     grid-template-columns: 1fr;
   }
 }
