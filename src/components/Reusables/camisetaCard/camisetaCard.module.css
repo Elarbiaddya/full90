@@ -4,12 +4,13 @@
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
   background: var(--light-gray);
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    /* sombra más intensa al hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     cursor: pointer;
   }
 
@@ -64,7 +65,7 @@
   .price {
     margin: 0;
     font-size: 1.1rem;
-    color: #ffd700;
+    color: var(--price-color);
   }
 
   p {

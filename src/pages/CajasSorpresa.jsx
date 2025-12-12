@@ -20,9 +20,9 @@ function CajasMisteriosas() {
   }, []);
 
   return (
-    <div className={styles.cajaGridContainer}>
+    <div className={styles.cajaContainer}>
       <h2>Cajas Sorpresa</h2>
-      <div className={styles.cajaGridContainer}>
+      <div className={styles.cajaGrid}>
         {cajas &&
           cajas
             .map((item, i) => <ProducSection key={i} caja={item} />)}
