@@ -12,8 +12,10 @@ function SobreNosotros() {
         <div className={styles.text}>
           <h2>Nuestra Historia</h2>
           <p>
-            En Full90 nacimos con la pasión por el fútbol y el estilo.
-            Nuestro objetivo es ofrecer camisetas únicas, de calidad y llenas de identidad.
+            En Full90 nacimos de la pasión por el fútbol y el estilo. Para nosotros, una camiseta no es solo una prenda: 
+            es identidad, emoción y recuerdos que se llevan en el pecho. Cada diseño nace con cuidado y originalidad, 
+            pensado para quienes viven el fútbol más allá de los 90 minutos. Calidad, personalidad y estilo en cada hilo: 
+            así es como contamos nuestra historia.
           </p>
         </div>
       </div>
@@ -27,8 +29,9 @@ function SobreNosotros() {
         <div className={styles.text}>
           <h2>Nuestro Objetivo</h2>
           <p>
-            Queremos que cada fanático viva su pasión con diseños cómodos, vistosos
-            y modernos. Full90 es más que ropa: es cultura futbolera.
+            En Full90 buscamos que cada fanático lleve su pasión al siguiente nivel. Diseños cómodos, 
+            modernos y llenos de personalidad que no solo se ven bien, sino que cuentan historias. 
+            Porque Full90 no es solo ropa: es cultura, emoción y estilo dentro y fuera de la cancha.
           </p>
         </div>
       </div>

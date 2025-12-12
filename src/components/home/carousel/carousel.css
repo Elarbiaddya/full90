@@ -20,13 +20,13 @@ body {
 }
 
 .slide1 {
-  background-image: url("/carousel/img1.webp");
+  background-image: url("/img/carousel/img1.webp");
   background-size:cover;
   background-position: center;
 }
 
 .slide2 {
-  background-image: url("/carousel/img2.webp");
+  background-image: url("/img/carousel/img2.webp");
   background-size: cover;
   background-position: center;
 }
