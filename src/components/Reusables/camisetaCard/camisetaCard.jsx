@@ -1,0 +1,21 @@
+import React from "react";
+import styles from "./camisetaCard.module.css";
+
+const CamisetaCard = ({ imagen, nombre, precio, equipo }) => {
+  return (
+    <div className={styles.card}>
+      <div className={styles.cardImageContainer}>
+        <img src={imagen} alt={nombre} />
+      </div>
+      <div className={styles.cardOverlay}>
+        <h3>{nombre}</h3>
+        <p className={styles.price}>{precio} €</p>
+        <p>
+          <strong>Equipo:</strong> {equipo}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default CamisetaCard;

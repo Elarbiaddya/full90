@@ -1,16 +1,17 @@
 import styles from "./modules/home.module.css";
 import Carousel from "../components/home/carousel/carousel";
-import CardGrid from "../components/home/cajaGrid/cajaGrid";
 import Marquee from "../components/home/marquee/marquee";
 import InfoCard from "../components/home/infoCard/infoCard";
 import ProducSection from "../components/home/cajaGrid/cajaGrid";
+import CamisetaGrid from "../components/home/camisetaGrid/camisetaGrid";
 
-import { getCajas } from "../utils/querys";
+import { getCajas, getCamisetas } from "../utils/querys";
 
 import { useState, useEffect } from "react";
 
 function Home() {
   const [cajas, setCajas] = useState(null);
+  const [camisetas, setCamisetas] = useState([]);
 
   useEffect(() => {
     const fetchCajas = async () => {
@@ -21,8 +22,17 @@ function Home() {
         console.error("Error desde el card-Grid", error);
       }
     };
+    const fetchCamisetas = async () => {
+      try {
+        const data = await getCamisetas();
+        setCamisetas(data);
+      } catch (error) {
+        console.error("Error cargando camisetas", error);
+      }
+    };
 
     fetchCajas();
+    fetchCamisetas();
   }, []);
   return (
     <div className={styles.container}>
@@ -44,7 +54,15 @@ function Home() {
               .map((item, i) => <ProducSection key={i} caja={item} />)}
         </div>
       </div>
-
+      <div className={styles.cajaContainer}>
+        <h2>Camisetas de fútbol</h2>
+        <div className={styles.cajaGridContainer}>
+          {camisetas &&
+            camisetas
+              .slice(0, 3)
+              .map((item, i) => <CamisetaGrid key={i} camiseta={item} />)}
+        </div>
+      </div>
       <Marquee />
     </div>
   );
