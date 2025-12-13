@@ -1,39 +1,104 @@
-import stylesImagen from "./imagen.module.css";
+import styles from "./detallesCamiseta.module.css";
 
 import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
 
-import { getAllProductoByID } from "../../../utils/querys.js";
-import { useEffect, useState } from "react";
+import { getAllCamisetasByID } from "../../../utils/querys";
+import { CartContext } from "../../../contexts/ContextCart";
 
-function Detalles() {
-  const { productID } = useParams();
-  const [product, setProducto] = useState(undefined);
+function ProductoDetalle() {
+  const { camisetaID } = useParams();
+  console.log("camisetaID desde la URL:", camisetaID);
+  const { añadirCarrito } = useContext(CartContext);
+
+  const [product, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [tallaSeleccionada, setTallaSeleccionada] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const data = await getAllProductoByID(productID);
+        const data = await getAllCamisetasByID(camisetaID);
         setProducto(data);
       } catch (error) {
-        console.error("Error al cargar los productos: ", error);
+        console.error("Error al cargar el producto:", error);
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
-  }, [productID]);
+  }, [camisetaID]);
 
   if (loading) return <p>Cargando...</p>;
-  if (!product) return <p>No se han encontrado productos...</p>;
+  if (!product) return <p>No se ha encontrado el producto</p>;
+
+  const orden = ["XS", "S", "M", "L", "XL"];
 
   return (
-    <div className={stylesImagen.container}>
-      {product && <img src={`${product?.url}`} alt={product?.alt} />}
-      {product && <img src={`${product?.url_r}`} alt={product?.alt} />}
-    </div>
+    <section className={styles.container}>
+      {/* ---------- IMÁGENES ---------- */}
+      <div className={styles.imagenes}>
+        <img src={product.url} alt={product.alt} />
+        {product.url_r && <img src={product.url_r} alt={product.alt} />}
+      </div>
+
+      {/* ---------- INFO ---------- */}
+      <div className={styles.info}>
+        <h1>{product.nombre}</h1>
+
+        {/* Precio */}
+        {product.precio_descuento ? (
+          <div className={styles.precio}>
+            <p>Precio:</p>
+            <h4 className={styles.descuento}>{product.precio} €</h4>
+            <h3>{product.precio_descuento} €</h3>
+          </div>
+        ) : (
+          <div className={styles.precio}>
+            <p>Precio:</p>
+            <h3>{product.precio} €</h3>
+          </div>
+        )}
+
+        {/* Tallas */}
+        {product.tallas && (
+          <div className={styles.tallas}>
+            {Object.entries(product.tallas)
+              .sort(([a], [b]) => orden.indexOf(a) - orden.indexOf(b))
+              .map(([talla, info]) => {
+                const noStock = info.stock < 1;
+                const isSelected = tallaSeleccionada === talla;
+
+                return (
+                  <div
+                    key={talla}
+                    className={`
+                      ${noStock ? styles.noStock : styles.stock}
+                      ${isSelected ? styles.tallaSeleccionada : ""}
+                    `}
+                    onClick={() => !noStock && setTallaSeleccionada(talla)}
+                  >
+                    <p>{talla}</p>
+                  </div>
+                );
+              })}
+          </div>
+        )}
+
+        {/* Botón */}
+        <div className={styles.button}>
+          <button
+            onClick={() => añadirCarrito(product, tallaSeleccionada)}
+            disabled={!tallaSeleccionada}
+          >
+            AÑADIR AL CARRITO
+          </button>
+        </div>
+      </div>
+    </section>
   );
 }
 
-export default Detalles;
+export default ProductoDetalle;

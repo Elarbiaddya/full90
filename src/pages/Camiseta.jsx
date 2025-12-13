@@ -1,7 +1,8 @@
+import ProductoDetalle from "../components/Reusables/detallesCamiseta/detallesCamiseta";
+
 function Camiseta() {
   return (
-    <h1>Camiseta</h1>
-    
+    <ProductoDetalle />
   );
 }
 
