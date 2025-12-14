@@ -8,7 +8,6 @@ import { CartContext } from "../../../contexts/ContextCart";
 
 function ProductoDetalle() {
   const { camisetaID } = useParams();
-  console.log("camisetaID desde la URL:", camisetaID);
   const { añadirCarrito } = useContext(CartContext);
 
   const [product, setProducto] = useState(null);
@@ -20,6 +19,7 @@ function ProductoDetalle() {
       setLoading(true);
       try {
         const data = await getAllCamisetasByID(camisetaID);
+        console.log("Tallas:", data?.tallas);
         setProducto(data);
       } catch (error) {
         console.error("Error al cargar el producto:", error);
@@ -37,10 +37,10 @@ function ProductoDetalle() {
   const orden = ["XS", "S", "M", "L", "XL"];
 
   return (
-    <section className={styles.container}>
+    <>
       {/* ---------- IMÁGENES ---------- */}
       <div className={styles.imagenes}>
-        <img src={product.url} alt={product.alt} />
+        <img src={product.imagen} alt={product.alt} />
         {product.url_r && <img src={product.url_r} alt={product.alt} />}
       </div>
 
@@ -63,27 +63,24 @@ function ProductoDetalle() {
         )}
 
         {/* Tallas */}
-        {product.tallas && (
+        {Array.isArray(product.tallas) && (
           <div className={styles.tallas}>
-            {Object.entries(product.tallas)
-              .sort(([a], [b]) => orden.indexOf(a) - orden.indexOf(b))
-              .map(([talla, info]) => {
-                const noStock = info.stock < 1;
-                const isSelected = tallaSeleccionada === talla;
+            {product.tallas.map((talla) => {
+              const isSelected = tallaSeleccionada === talla;
 
-                return (
-                  <div
-                    key={talla}
-                    className={`
-                      ${noStock ? styles.noStock : styles.stock}
-                      ${isSelected ? styles.tallaSeleccionada : ""}
-                    `}
-                    onClick={() => !noStock && setTallaSeleccionada(talla)}
-                  >
-                    <p>{talla}</p>
-                  </div>
-                );
-              })}
+              return (
+                <div
+                  key={talla}
+                  className={`
+            ${styles.stock}
+            ${isSelected ? styles.tallaSeleccionada : ""}
+          `}
+                  onClick={() => setTallaSeleccionada(talla)}
+                >
+                  <p>{talla}</p>
+                </div>
+              );
+            })}
           </div>
         )}
 
@@ -97,7 +94,7 @@ function ProductoDetalle() {
           </button>
         </div>
       </div>
-    </section>
+    </>
   );
 }
 

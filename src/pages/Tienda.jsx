@@ -25,7 +25,7 @@ function Tienda() {
       <div className={styles.camisetasGrid}>
         {camisetas &&
           camisetas
-            .map((item, i) => <CamisetaGrid key={i} camiseta={item} />)}
+            .map((item) => <CamisetaGrid key={item.id} camiseta={item} />)}
       </div>
     </div>
   );

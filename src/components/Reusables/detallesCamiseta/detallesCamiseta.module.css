@@ -1,120 +1,86 @@
-.container {
-    width: 50%;
-    height: 100%;
+.precio {
+  width: 348px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  align-items: center;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
+  p {
+    font-size: 18px;
+  }
 
-    img{
-        width: 50%;
-        height: max-content;
-    }
-
-    .precio {
-        width: 348px;
-        display: flex;
-        justify-content: flex-start;
-        gap: 12px;
-        align-items: center;
-
-        p {
-            font-size: 18px;
-        }
-
-        h3 {
-            font-family: "Archivo-SemiBold", sans-serif;
-            font-weight: 100;
-        }
-    }
-
-    .tallas {
-        display: flex;
-        gap: 12px;
-
-        .tallaSeleccionada {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            background-color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            color: var(--white-color);
-        }
-
-        p {
-            font-size: 20px;
-        }
-
-    }
-
-    .button {
-        display: flex;
-        width: 348px;
-
-        button {
-            background-color: var(--primary-color);
-            border: none;
-            cursor: pointer;
-            padding: 8px 12px;
-            font-size: 16px;
-            font-family: "Archivo-Normal", sans-serif;
-            letter-spacing: .1rem;
-            color: var(--white-color);
-
-            display: block;
-            flex: 1;
-
-            &:hover {
-                background-color: var(--cta-color);
-            }
-        }
-    }
-
+  h3 {
+    font-family: "Archivo-SemiBold", sans-serif;
+    font-weight: 100;
+  }
 }
 
+.tallas {
+  display: flex;
+  gap: 12px;
+
+  .tallaSeleccionada {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: var(--white-color);
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+.button {
+  display: flex;
+  width: 348px;
+
+  button {
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-family: "Archivo-Normal", sans-serif;
+    letter-spacing: 0.1rem;
+    color: var(--white-color);
+
+    display: block;
+    flex: 1;
+
+    &:hover {
+      background-color: var(--cta-color);
+    }
+  }
+}
 
 @media (max-width: 800px) {
-    .container {
-        width: 100%;
+  .container {
+    width: 100%;
 
-        .button {
-            width: 100%;
-        }
+    .button {
+      width: 100%;
     }
+  }
 }
 
-
-
 @media (max-width: 400px) {
-    .container {
-        justify-content: center;
-        align-items: center;
 
-        .precio {
-            justify-content: center;
-        }
+  .precio {
+    justify-content: center;
+  }
 
-        .tallas{
-            align-items: center;
-            justify-content: center;
-            .tallaSeleccionada{
-                height: 40px;
-                width: 40px;
-            }
-
-            .stock{
-                height: 40px;
-                width: 40px;
-            }
-
-            .noStock{
-                height: 40px;
-                width: 40px;
-            }
-        }
+  .tallas {
+    align-items: center;
+    justify-content: center;
+    .tallaSeleccionada {
+      height: 40px;
+      width: 40px;
     }
+  }
 }

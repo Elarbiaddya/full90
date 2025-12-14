@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./camisetaCard.module.css";
 
-const CamisetaCard = ({ imagen, nombre, precio, equipo }) => {
+const CamisetaCard = ({ id, imagen, nombre, precio, equipo }) => {
   return (
-    <Link to={`/Tienda/${camiseta.id}`}>
+    <Link to={`/Tienda/${id}`}>
       <div className={styles.card}>
         <div className={styles.cardImageContainer}>
           <img src={imagen} alt={nombre} />
