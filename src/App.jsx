@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 
 import Registro from "./pages/Registro";
-import CajasMisteriosas from "./pages/CajasSorpresa";
+import CajasSorpresa from "./pages/CajasSorpresa";
 import Tienda from "./pages/Tienda";
 import Carrito from "./pages/Carrito";
 import Camiseta from "./pages/Camiseta";
@@ -42,10 +42,10 @@ function App() {
       <Routes>
         <Route path="/" element={<BigLayout />}>
           <Route index element={<Home />} />
-          <Route path="/CajasMisteriosas" element={<CajasMisteriosas />} />
+          <Route path="/CajasSorpresa" element={<CajasSorpresa />} />
           <Route path="/Tienda" element={<Tienda />} />
+          <Route path="/Tienda/:camisetaID" element={<Camiseta />} />
           <Route path="/Carrito" element={<Carrito />} />
-          <Route path="/Camiseta" element={<Camiseta />} />
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/Pago" element={<Pago />} />
           <Route path="/SobreNosotros" element={<SobreNosotros />} />

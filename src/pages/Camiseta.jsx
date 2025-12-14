@@ -1,7 +1,12 @@
+import ProductoDetalle from "../components/Reusables/detallesCamiseta/detallesCamiseta";
+import styles from "./modules/camiseta.module.css";
+
+
 function Camiseta() {
   return (
-    <h1>Camiseta</h1>
-    
+    <div className={styles.camisetaContainer}>
+      <ProductoDetalle />
+    </div>
   );
 }
 

@@ -4,6 +4,7 @@ import CamisetaCard from "../../Reusables/camisetaCard/camisetaCard";
 const CamisetaGrid = ({ camiseta }) => {
   return (
     <CamisetaCard
+      id={camiseta.id}
       imagen={camiseta.imagen}
       nombre={camiseta.nombre}
       precio={camiseta.precio}
