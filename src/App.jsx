@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 
 import Registro from "./pages/Registro";
-import CajasMisteriosas from "./pages/CajasMisteriosas";
+import CajasMisteriosas from "./pages/CajasSorpresa";
 import Tienda from "./pages/Tienda";
 import Carrito from "./pages/Carrito";
 import Camiseta from "./pages/Camiseta";
