@@ -72,7 +72,6 @@ function ProductoDetalle() {
                 <div
                   key={talla}
                   className={`
-            ${styles.stock}
             ${isSelected ? styles.tallaSeleccionada : ""}
           `}
                   onClick={() => setTallaSeleccionada(talla)}
