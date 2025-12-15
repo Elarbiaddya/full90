@@ -7,7 +7,11 @@ import { UserContext } from "./ContextUser";
 const CartContext = createContext(null);
 
 function CartContextProvider({ children }) {
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(() => {
+    const data = localStorage.getItem("UserCarrito");
+    return data ? JSON.parse(data) : [];
+  });
+
   const { currentUser } = useContext(UserContext);
 
   // =========================
@@ -15,8 +19,7 @@ function CartContextProvider({ children }) {
   // =========================
   useEffect(() => {
     async function cargarCarrito() {
-      const carritoLS =
-        JSON.parse(localStorage.getItem("UserCarrito")) || [];
+      const carritoLS = JSON.parse(localStorage.getItem("UserCarrito")) || [];
 
       // Usuario NO logueado
       if (!currentUser) {
@@ -57,10 +60,7 @@ function CartContextProvider({ children }) {
           });
 
           setCarrito(carritoMerge);
-          localStorage.setItem(
-            "UserCarrito",
-            JSON.stringify(carritoMerge)
-          );
+          localStorage.setItem("UserCarrito", JSON.stringify(carritoMerge));
           await setDoc(ref, { items: carritoMerge });
         }
       } catch (error) {
@@ -100,10 +100,13 @@ function CartContextProvider({ children }) {
   // =========================
   // ACCIONES DEL CARRITO
   // =========================
-  function añadirCarrito(producto) {
-    const productoExistente = carrito.find(
-      (prod) => prod.id === producto.id
-    );
+  function añadirCarrito(producto, tallaSeleccionada) {
+    if (!tallaSeleccionada) {
+      alert("Selecciona una talla.");
+      return;
+    }
+
+    const productoExistente = carrito.find((prod) => prod.id === producto.id);
 
     let nuevoCarrito;
 
@@ -134,9 +137,7 @@ function CartContextProvider({ children }) {
       borrarItemCarrito(id);
     } else {
       const nuevoCarrito = carrito.map((prod) =>
-        prod.id === id
-          ? { ...prod, cantidad: prod.cantidad - 1 }
-          : prod
+        prod.id === id ? { ...prod, cantidad: prod.cantidad - 1 } : prod
       );
       setCarrito(nuevoCarrito);
     }
@@ -144,9 +145,7 @@ function CartContextProvider({ children }) {
 
   function sumarCantidad(id) {
     const nuevoCarrito = carrito.map((prod) =>
-      prod.id === id
-        ? { ...prod, cantidad: prod.cantidad + 1 }
-        : prod
+      prod.id === id ? { ...prod, cantidad: prod.cantidad + 1 } : prod
     );
     setCarrito(nuevoCarrito);
   }
@@ -158,13 +157,7 @@ function CartContextProvider({ children }) {
     if (!currentUser) return;
 
     try {
-      const ref = doc(
-        db,
-        "users",
-        currentUser.uid,
-        "carrito",
-        "carritoActual"
-      );
+      const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
       await deleteDoc(ref);
     } catch (error) {
       console.error("Error al vaciar el carrito", error);
@@ -181,9 +174,7 @@ function CartContextProvider({ children }) {
   };
 
   return (
-    <CartContext.Provider value={ctxValue}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={ctxValue}>{children}</CartContext.Provider>
   );
 }
 

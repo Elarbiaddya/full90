@@ -83,8 +83,7 @@ function ProductoDetalle() {
         {/* Botón */}
         <div className={styles.button}>
           <button
-            onClick={() => añadirCarrito(product)}
-            disabled={!tallaSeleccionada}
+            onClick={() => añadirCarrito(product, tallaSeleccionada)}
           >
             AÑADIR AL CARRITO
           </button>
