@@ -64,7 +64,7 @@ function Header() {
             </li>
             <li><span>|</span></li>
             <li>
-              <NavLink to="/CajasMisteriosas" onClick={() => setMenuAbierto(false)}>
+              <NavLink to="/CajasSorpresa" onClick={() => setMenuAbierto(false)}>
                 Cajas Sorpresa
               </NavLink>
             </li>

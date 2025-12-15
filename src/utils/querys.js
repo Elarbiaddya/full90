@@ -12,6 +12,17 @@ export const getAllCamisetasByID = async (camisetaId) => {
   return { id: snapshot.id, ...snapshot.data() };
 };
 
+export const getAllCajasByID = async (cajaId) => {
+  const ref = doc(db, "cajas", cajaId);
+  const snapshot = await getDoc(ref);
+
+  if (!snapshot.exists()) {
+    throw new Error("Caja no encontrada");
+  }
+
+  return { id: snapshot.id, ...snapshot.data() };
+};
+
 
 export const getCajas = async () => {
         const ref = await getDocs(collection(db, "cajas"));

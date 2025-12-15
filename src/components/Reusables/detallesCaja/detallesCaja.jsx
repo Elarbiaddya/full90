@@ -1,13 +1,13 @@
-import styles from "./detallesCamiseta.module.css";
+import styles from "./detallesCaja.module.css";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 
-import { getAllCamisetasByID } from "../../../utils/querys";
+import { getAllCajasByID } from "../../../utils/querys";
 import { CartContext } from "../../../contexts/ContextCart";
 
 function ProductoDetalle() {
-  const { camisetaID } = useParams();
+  const { cajaID } = useParams();
   const { añadirCarrito } = useContext(CartContext);
 
   const [product, setProducto] = useState(null);
@@ -18,7 +18,7 @@ function ProductoDetalle() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const data = await getAllCamisetasByID(camisetaID);
+        const data = await getAllCajasByID(cajaID);
         setProducto(data);
       } catch (error) {
         console.error("Error al cargar el producto:", error);
@@ -28,11 +28,11 @@ function ProductoDetalle() {
     };
 
     fetchData();
-  }, [camisetaID]);
+  }, [cajaID]);
 
   if (loading) return <p>Cargando...</p>;
   if (!product) return <p>No se ha encontrado el producto</p>;
-
+  
   return (
     <>
       {/* ---------- IMÁGENES ---------- */}

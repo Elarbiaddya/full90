@@ -11,6 +11,7 @@ import CajasSorpresa from "./pages/CajasSorpresa";
 import Tienda from "./pages/Tienda";
 import Carrito from "./pages/Carrito";
 import Camiseta from "./pages/Camiseta";
+import Caja from "./pages/Cajas";
 import Perfil from "./pages/Perfil";
 import SobreNosotros from "./pages/SobreNosotros";
 import Admin from "./pages/Admin";
@@ -45,6 +46,7 @@ function App() {
           <Route path="/CajasSorpresa" element={<CajasSorpresa />} />
           <Route path="/Tienda" element={<Tienda />} />
           <Route path="/Tienda/:camisetaID" element={<Camiseta />} />
+          <Route path="/CajasSorpresa/:cajaID" element={<Caja />} />
           <Route path="/Carrito" element={<Carrito />} />
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/Pago" element={<Pago />} />

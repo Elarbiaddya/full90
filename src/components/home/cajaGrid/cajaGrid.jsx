@@ -6,6 +6,7 @@ const ProducSection = ({ caja }) => {
     <div className={styles.productSection}>
       <div className={styles.cardGrid}>
         <CajaCard
+          id={caja.id}
           imagen={caja.imagen}
           nombre={caja.nombre}
           precio={caja.precio}

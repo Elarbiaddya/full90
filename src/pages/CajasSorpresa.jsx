@@ -3,7 +3,7 @@ import { getCajas } from "../utils/querys";
 import { useState, useEffect } from "react";
 import ProducSection from "../components/home/cajaGrid/cajaGrid";
 
-function CajasMisteriosas() {
+function CajasSorpresa() {
   const [cajas, setCajas] = useState(null);
 
   useEffect(() => {
@@ -25,10 +25,10 @@ function CajasMisteriosas() {
       <div className={styles.cajaGrid}>
         {cajas &&
           cajas
-            .map((item, i) => <ProducSection key={i} caja={item} />)}
+            .map((item) => <ProducSection key={item.id} caja={item} />)}
       </div>
     </div>
   );
 }
 
-export default CajasMisteriosas;
+export default CajasSorpresa;
