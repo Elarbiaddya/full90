@@ -1,313 +1,189 @@
-import { createContext, useState, useEffect } from "react";
-
-import { useContext } from "react";
-import { UserContext } from "./ContextUser";
-
-import { doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { createContext, useContext, useEffect, useState } from "react";
+import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { toast } from "react-toastify";
+import { UserContext } from "./ContextUser";
 
-const CartContext = createContext({
-  productos: null,
-  setProductos: () => null,
-});
+const CartContext = createContext(null);
 
 function CartContextProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
-  const [ultimoProducto, setUltimoProducto] = useState(null);
-
   const { currentUser } = useContext(UserContext);
 
+  // =========================
+  // CARGAR CARRITO INICIAL
+  // =========================
   useEffect(() => {
     async function cargarCarrito() {
-      const carritoLocalStorage = JSON.parse(localStorage.getItem("UserCarrito")) || [];
+      const carritoLS =
+        JSON.parse(localStorage.getItem("UserCarrito")) || [];
 
-      // Si no tengo usuario:
-      if (currentUser === null) {
-        setCarrito(carritoLocalStorage || []);
-      } else {
-        if (carritoLocalStorage.length !== 0) {
+      // Usuario NO logueado
+      if (!currentUser) {
+        setCarrito(carritoLS);
+        return;
+      }
 
-          const hasMerge = JSON.parse(localStorage.getItem("Merge"));
-          // SI el usuario aún no ha hecho el merge
-          if (!hasMerge) {
-            try {
-              const ref = doc(
-                db,
-                "users",
-                currentUser?.uid,
-                "carrito",
-                "carritoActual"
-              );
-              const snapshot = await getDoc(ref);
+      // Usuario logueado
+      try {
+        const ref = doc(
+          db,
+          "users",
+          currentUser.uid,
+          "carrito",
+          "carritoActual"
+        );
+        const snapshot = await getDoc(ref);
 
-              // Si no existe la coleccion
-              if (!snapshot.exists()) {
-
-                await setDoc(ref, { items: carritoLocalStorage });
-              } else {
-
-                const carritoFirebase = snapshot.data().items || [];
-                const carritoMerge = [...carritoFirebase];
-
-                carritoLocalStorage.forEach((itemLS) => {
-                  const existente = carritoFirebase.find((item) => item.id === itemLS.id && (item.tallaSeleccionada ?? null) === (itemLS.tallaSeleccionada ?? null))
-
-                  if (existente) {
-                    existente.cantidad += itemLS.cantidad;
-                  } else {
-                    carritoMerge.push(itemLS);
-                  }
-                })
-                await setDoc(ref, { items: carritoMerge });
-                setCarrito(carritoMerge);
-                localStorage.setItem("UserCarrito", JSON.stringify(carritoMerge));
-              }
-            } catch (error) {
-              console.error("Error al hacer el merge por primera vez", error);
-            }
-
-            localStorage.setItem("Merge", true);
-          } else {
-            try {
-              const ref = doc(
-                db,
-                "users",
-                currentUser?.uid,
-                "carrito",
-                "carritoActual"
-              );
-              const snapshot = await getDoc(ref);
-
-              if (snapshot.exists()) {
-                await updateDoc(ref, { items: carrito });
-              }
-            } catch (error) {
-              console.error("Error al hacer el merge cuando ya hice el merge una vez.", error);
-            }
-          }
+        // Si no existe en Firebase, guardamos el local
+        if (!snapshot.exists()) {
+          await setDoc(ref, { items: carritoLS });
+          setCarrito(carritoLS);
         } else {
-          try {
-            const ref = doc(
-              db,
-              "users",
-              currentUser?.uid,
-              "carrito",
-              "carritoActual"
-            );
-            const snapshot = await getDoc(ref);
+          // Merge local + firebase
+          const carritoFirebase = snapshot.data().items || [];
+          const carritoMerge = [...carritoFirebase];
 
-            if (snapshot.exists()) {
-              setCarrito(snapshot.data().items || []);
+          carritoLS.forEach((itemLS) => {
+            const existente = carritoMerge.find(
+              (item) => item.id === itemLS.id
+            );
+
+            if (existente) {
+              existente.cantidad += itemLS.cantidad;
+            } else {
+              carritoMerge.push(itemLS);
             }
-          } catch (error) {
-            console.error("Error al acceder a FIrebase", error);
-          }
+          });
+
+          setCarrito(carritoMerge);
+          localStorage.setItem(
+            "UserCarrito",
+            JSON.stringify(carritoMerge)
+          );
+          await setDoc(ref, { items: carritoMerge });
         }
+      } catch (error) {
+        console.error("Error cargando carrito", error);
       }
     }
+
     cargarCarrito();
   }, [currentUser]);
 
+  // =========================
+  // SINCRONIZAR CARRITO
+  // =========================
   useEffect(() => {
-    async function actualizarCarrito() {
-      if (ultimoProducto !== null) {
-        if (currentUser === null) {
-          localStorage.setItem("UserCarrito", JSON.stringify(carrito));
-        } else {
-          localStorage.setItem("UserCarrito", JSON.stringify(carrito));
-          try {
-            const ref = doc(
-              db,
-              "users",
-              currentUser.uid,
-              "carrito",
-              "carritoActual"
-            );
-            const snapshot = await getDoc(ref);
+    localStorage.setItem("UserCarrito", JSON.stringify(carrito));
 
-            if (!snapshot.exists()) {
-              await setDoc(ref, { items: carrito });
-            } else {
-              await updateDoc(ref, { items: carrito });
-            }
-          } catch (error) {
-            console.error("Error al actualizar carrito en a Firebase", error);
-          }
-        }
+    if (!currentUser) return;
+
+    const syncFirebase = async () => {
+      try {
+        const ref = doc(
+          db,
+          "users",
+          currentUser.uid,
+          "carrito",
+          "carritoActual"
+        );
+        await setDoc(ref, { items: carrito }, { merge: true });
+      } catch (error) {
+        console.error("Error sincronizando carrito", error);
       }
-    }
-    actualizarCarrito();
-  }, [carrito]);
+    };
 
-  async function añadirCarrito(producto, tallaSeleccionada) {
-    if (producto.tallas && !tallaSeleccionada) {
-      alert("Selecciona una talla.");
-      return;
-    }
+    syncFirebase();
+  }, [carrito, currentUser]);
 
-    const productoEnCarrito = carrito?.find(
-      (prod) =>
-        prod.id === producto.id &&
-        prod.tallaSeleccionada === tallaSeleccionada
+  // =========================
+  // ACCIONES DEL CARRITO
+  // =========================
+  function añadirCarrito(producto) {
+    const productoExistente = carrito.find(
+      (prod) => prod.id === producto.id
     );
 
-    const stockDisponible = producto.tallas ? producto.tallas[tallaSeleccionada].stock : 10;
-    const cantidadEnCarrito = productoEnCarrito?.cantidad ?? 0;
-
-    if (cantidadEnCarrito >= stockDisponible) {
-      alert("No hay suficiente stock para esta talla");
-      return;
-    }
-
-    const productoCarrito = { ...producto, tallaSeleccionada, cantidad: 1 };
-    const productoExistente = carrito?.find(
-      (prod) =>
-        prod.id === productoCarrito.id &&
-        (prod?.tallaSeleccionada ?? null) ===
-        (productoCarrito?.tallaSeleccionada ?? null)
-    );
     let nuevoCarrito;
 
     if (productoExistente) {
       nuevoCarrito = carrito.map((prod) =>
-        prod.id === productoExistente.id &&
-          (prod?.tallaSeleccionada ?? null) ===
-          (productoExistente?.tallaSeleccionada ?? null)
+        prod.id === producto.id
           ? { ...prod, cantidad: prod.cantidad + 1 }
           : prod
       );
     } else {
-      nuevoCarrito = [...carrito, productoCarrito];
+      nuevoCarrito = [...carrito, { ...producto, cantidad: 1 }];
     }
 
     setCarrito(nuevoCarrito);
-    setUltimoProducto(productoCarrito);
     toast.success("Producto añadido al carrito");
   }
 
-  async function vaciarCarrito() {
-    localStorage.clear();
-    setCarrito([]);
-    if (currentUser === null) {
-      return;
+  function borrarItemCarrito(id) {
+    const nuevoCarrito = carrito.filter((prod) => prod.id !== id);
+    setCarrito(nuevoCarrito);
+  }
+
+  function restarCantidad(id) {
+    const producto = carrito.find((prod) => prod.id === id);
+    if (!producto) return;
+
+    if (producto.cantidad === 1) {
+      borrarItemCarrito(id);
+    } else {
+      const nuevoCarrito = carrito.map((prod) =>
+        prod.id === id
+          ? { ...prod, cantidad: prod.cantidad - 1 }
+          : prod
+      );
+      setCarrito(nuevoCarrito);
     }
+  }
+
+  function sumarCantidad(id) {
+    const nuevoCarrito = carrito.map((prod) =>
+      prod.id === id
+        ? { ...prod, cantidad: prod.cantidad + 1 }
+        : prod
+    );
+    setCarrito(nuevoCarrito);
+  }
+
+  async function vaciarCarrito() {
+    setCarrito([]);
+    localStorage.removeItem("UserCarrito");
+
+    if (!currentUser) return;
 
     try {
-      const ref = doc(db, "users", currentUser?.uid, "carrito", "carritoActual");
-      const snapshot = await getDoc(ref);
-
-      if (snapshot.exists()) {
-        await deleteDoc(ref);
-      }
+      const ref = doc(
+        db,
+        "users",
+        currentUser.uid,
+        "carrito",
+        "carritoActual"
+      );
+      await deleteDoc(ref);
     } catch (error) {
       console.error("Error al vaciar el carrito", error);
     }
-
-  }
-
-  async function borrarItemCarrito(id, tallaSeleccionada) {
-    const nuevoCarrito = carrito?.filter(
-      (prod) =>
-        prod.id !== id ||
-        (prod?.tallaSeleccionada ?? null) !==
-        (tallaSeleccionada ?? null)
-    );
-
-
-    setCarrito(nuevoCarrito);
-    localStorage.setItem("UserCarrito", JSON.stringify(nuevoCarrito));
-  }
-
-  async function restarCantidad(id, tallaSeleccionada, currentUser) {
-    const productoExistente = carrito?.find(
-      (prod) =>
-        prod.id === id &&
-        (prod?.tallaSeleccionada ?? null) ===
-        (tallaSeleccionada ?? null)
-    );
-    let nuevoCarrito;
-
-    if (productoExistente && productoExistente.cantidad === 1) {
-      borrarItemCarrito(id, tallaSeleccionada);
-    }
-
-    if (productoExistente && productoExistente.cantidad > 1) {
-      nuevoCarrito = carrito.map((prod) =>
-        prod.id === productoExistente.id &&
-          (prod?.tallaSeleccionada ?? null) ===
-          (productoExistente?.tallaSeleccionada ?? null)
-          ? { ...prod, cantidad: prod.cantidad > 1 ? prod.cantidad - 1 : prod.cantidad }
-          : prod
-      );
-
-      if (currentUser) {
-        try {
-          const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
-          const snapshot = await getDoc(ref);
-
-          if (snapshot.exists()) {
-            await updateDoc(ref, { items: nuevoCarrito });
-          }
-        } catch (error) {
-          console.error("Error al vaciar el carrito", error);
-        }
-      }
-
-      setCarrito(nuevoCarrito);
-      localStorage.setItem("UserCarrito", JSON.stringify(nuevoCarrito))
-    }
-  }
-
-  async function sumarCantidad(id, tallaSeleccionada, currentUser) {
-    const productoExistente = carrito?.find(
-      (prod) =>
-        prod.id === id &&
-        (prod?.tallaSeleccionada ?? null) ===
-        (tallaSeleccionada ?? null)
-    );
-    let nuevoCarrito;
-
-    if (productoExistente) {
-      const talla = productoExistente.tallaSeleccionada;
-      const stockMaximo = productoExistente.tallas[talla]?.stock ?? 0;
-      nuevoCarrito = carrito.map((prod) =>
-        prod.id === productoExistente.id &&
-          (prod?.tallaSeleccionada ?? null) ===
-          (productoExistente?.tallaSeleccionada ?? null)
-          ? { ...prod, cantidad: prod.cantidad < stockMaximo ? prod.cantidad + 1 : prod.cantidad }
-          : prod
-      );
-      if (currentUser) {
-        try {
-          const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
-          const snapshot = await getDoc(ref);
-
-          if (snapshot.exists()) {
-            await updateDoc(ref, { items: nuevoCarrito });
-          }
-        } catch (error) {
-          console.error("Error al vaciar el carrito", error);
-        }
-      }
-
-      setCarrito(nuevoCarrito);
-      localStorage.setItem("UserCarrito", JSON.stringify(nuevoCarrito))
-    }
-
   }
 
   const ctxValue = {
     carrito,
     añadirCarrito,
-    vaciarCarrito,
     borrarItemCarrito,
     restarCantidad,
     sumarCantidad,
+    vaciarCarrito,
   };
 
   return (
-    <CartContext.Provider value={ctxValue}>{children}</CartContext.Provider>
+    <CartContext.Provider value={ctxValue}>
+      {children}
+    </CartContext.Provider>
   );
 }
 

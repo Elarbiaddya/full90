@@ -8,7 +8,7 @@ import { CartContext } from "../../../contexts/ContextCart";
 
 function ProductoDetalle() {
   const { cajaID } = useParams();
-  const { añadirCarrito } = useContext(CartContext);
+  const { carrito, añadirCarrito } = useContext(CartContext);
 
   const [product, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -83,7 +83,7 @@ function ProductoDetalle() {
         {/* Botón */}
         <div className={styles.button}>
           <button
-            onClick={() => añadirCarrito(product, tallaSeleccionada)}
+            onClick={() => añadirCarrito(product)}
             disabled={!tallaSeleccionada}
           >
             AÑADIR AL CARRITO
